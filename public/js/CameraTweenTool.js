@@ -188,7 +188,7 @@
                 upTween
             ])
                 .then(() => {
-                    this.animate = false;
+                    this.stopAnimation();
 
                     this.viewer.fireEvent({
                         type: CAMERA_TWEEN_ANIMATION_COMPLETED_EVENT,
@@ -196,15 +196,35 @@
                     });
                 });
 
-            this.runAnimation(true);
+            this.startAnimation();
         }
 
-        runAnimation(start) {
-            if (start || this.animate) {
+        stopAnimation() {
+            this.animate = false;
 
-                this.animId = window.requestAnimationFrame(this.runAnimation);
-                TWEEN.update();
+            if (this.animId)
+                window.cancelAnimationFrame(this.animId);
+        }
+
+        startAnimation() {
+            this.animate = true;
+            this.runAnimation();
+        }
+
+        toggleAnimation() {
+            if (this.animate) {
+                this.stopAnimation();
+            } else {
+                this.startAnimation();
             }
+        }
+
+        runAnimation() {
+            if (!this.animate)
+                return;
+
+            this.animId = window.requestAnimationFrame(this.runAnimation);
+            TWEEN.update();
         }
 
         getState(viewerState) {

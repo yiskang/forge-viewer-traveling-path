@@ -101,6 +101,7 @@
             this.targetTweenDuration = 4500;
             this.posTweenDuration = 4500;
             this.upTweenDuration = 4500;
+            this.tweens = [];
 
             this.targetTweenEasing = this.getTweenEasingByName('Linear');
             this.posTweenEasing = this.getTweenEasingByName('Linear');
@@ -119,12 +120,14 @@
 
         createTween(params) {
             return new Promise((resolve) => {
-                new TWEEN.Tween(params.object)
+                const tween = new TWEEN.Tween(params.object)
                     .to(params.to, params.duration)
                     .onComplete(() => resolve())
                     .onUpdate(params.onUpdate)
                     .easing(params.easing)
                     .start();
+
+                this.tweens.push(tween);
             });
         }
 
@@ -201,9 +204,22 @@
 
         stopAnimation() {
             this.animate = false;
+            while (this.tweens.length > 0) {
+                this.tweens.pop();
+            }
 
             if (this.animId)
                 window.cancelAnimationFrame(this.animId);
+        }
+
+        pauseAnimation() {
+            this.animate = false;
+            this.tweens.forEach(t => t.pause());
+        }
+
+        resumeAnimation() {
+            this.animate = true;
+            this.tweens.forEach(t => t.resume());
         }
 
         startAnimation() {
@@ -213,18 +229,18 @@
 
         toggleAnimation() {
             if (this.animate) {
-                this.stopAnimation();
+                this.pauseAnimation();
             } else {
-                this.startAnimation();
+                this.resumeAnimation();
             }
         }
 
         runAnimation() {
-            if (!this.animate)
-                return;
-
             this.animId = window.requestAnimationFrame(this.runAnimation);
-            TWEEN.update();
+
+            if (this.animate) {
+                TWEEN.update();
+            }
         }
 
         getState(viewerState) {

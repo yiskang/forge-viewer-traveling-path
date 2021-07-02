@@ -397,6 +397,14 @@
             return promisesInSequence(data, (d) => this.executeTweenPromised(d));
         }
 
+        pauseTweens() {
+            this.cameraTweenTool.pauseAnimation();
+        }
+
+        resumeTweens() {
+            this.cameraTweenTool.resumeAnimation();
+        }
+
         onToolbarCreated(toolbar) {
             const controller = this.viewer.toolController;
             const drawWalkingPathButton = new Autodesk.Viewing.UI.Button('draw-walking-path-lines-tool-button');

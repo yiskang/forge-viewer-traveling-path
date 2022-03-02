@@ -26,7 +26,7 @@ function launchViewer(urn, viewableId) {
   };
 
   Autodesk.Viewing.Initializer(options, () => {
-    viewer = new Autodesk.Viewing.GuiViewer3D(document.getElementById('forgeViewer'), {extensions: ['Autodesk.ADN.WalkingPathToolExtension']});
+    viewer = new Autodesk.Viewing.GuiViewer3D(document.getElementById('forgeViewer'), {extensions: ['Autodesk.ADN.MoveToRoomExtension']});
     viewer.start();
     var documentId = 'urn:' + urn;
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);

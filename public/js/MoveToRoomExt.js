@@ -285,6 +285,7 @@
             });
 
             await Promise.all([
+                Autodesk.Viewing.Private.theResourceLoader.loadScript('https://unpkg.com/@tweenjs/tween.js@18.6.4/dist/tween.umd.js', 'TWEEN'),
                 Autodesk.Viewing.Private.theResourceLoader.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', '$'),
                 Autodesk.Viewing.Private.theResourceLoader.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/jstree.min.js', '$'),
                 loadCSS('https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/themes/default/style.min.css'),

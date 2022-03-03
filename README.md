@@ -1,4 +1,4 @@
-# forge-viewer-traveling-path
+# forge-viewer-navigating-to-rooms
 
 ![Node.js](https://img.shields.io/badge/node-%3E%3D%2010.0.0-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platform-windows%20%7C%20osx%20%7C%20linux-lightgray.svg)
@@ -12,11 +12,11 @@
 
 # Description
 
-This sample is a revision of the [Learn Forge](http://learnforge.autodesk.io) node.js tutorials demonstrating walking paths in Forge Viewer.
+This sample is a revision of the [Learn Forge](http://learnforge.autodesk.io) node.js tutorials demonstrating navigating to an Revit room in Forge Viewer.
 
 ## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/fXQnEXnGajQ/0.jpg)](https://youtu.be/fXQnEXnGajQ)
+[![Watch the video](https://img.youtube.com/vi/3MzihDJpi70/0.jpg)](https://youtu.be/3MzihDJpi70)
 
 # Setup
 
